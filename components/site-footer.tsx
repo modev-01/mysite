@@ -31,7 +31,7 @@ export function SiteFooter() {
         </div>
 
         <p className="text-center text-sm text-muted-foreground">
-          © {year} أحمد الرويشد. جميع الحقوق محفوظة. صُمّم وطُوّر بشغف.
+          © {year} محمد قماري. جميع الحقوق محفوظة. صُمّم وطُوّر بشغف.
         </p>
 
         <div className="flex items-center gap-3">
