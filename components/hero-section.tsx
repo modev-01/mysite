@@ -26,19 +26,22 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center px-5 pt-24"
+      // 1. تمت إضافة overflow-x-hidden و w-full لمنع أي تمدد أفقي خارج الشاشة
+      className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-x-hidden px-4 py-24 lg:pb-0 lg:pt-24"
     >
-      <div className="grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2">
+      {/* 2. تمت إضافة min-w-0 هنا لتقييد الـ Grid ومنعه من التمدد خارج حدود الهاتف */}
+      <div className="grid w-full min-w-0 max-w-6xl items-center gap-8 lg:grid-cols-2 lg:gap-12">
         {/* Text block */}
-        <div className="animate-fade-up text-center lg:text-right">
+        {/* 3. إضافة min-w-0 للقسم النصي */}
+        <div className="animate-fade-up min-w-0 w-full text-center lg:text-right">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 font-mono text-xs text-primary">
             <Sparkles className="size-3.5" />
             متاح لمشاريع جديدة
           </span>
 
-          <h1 className="mt-6 text-balance text-4xl font-extrabold leading-tight text-foreground sm:text-6xl">
+          <h1 className="mt-6 text-balance text-4xl font-extrabold leading-tight text-foreground sm:text-5xl lg:text-6xl">
             {FULL_NAME}
-            <span className="mt-2 block text-primary text-glow">
+            <span className="mt-2 block text-glow text-primary">
               مطور واجهات أمامية محترف
             </span>
           </h1>
@@ -87,12 +90,13 @@ export function HeroSection() {
         </div>
 
         {/* Terminal / code editor mock */}
+        {/* 4. إضافة min-w-0 هنا لتجبر عنصر محاكي الأكواد أن يلتزم بعرض الشاشة بدلاً من التمدد */}
         <div
-          className="animate-fade-up animate-float"
+          className="animate-fade-up animate-float min-w-0 w-full"
           style={{ animationDelay: "0.15s" }}
           dir="ltr"
         >
-          <div className="glass overflow-hidden rounded-2xl border border-border shadow-2xl shadow-primary/5">
+          <div className="glass w-full overflow-hidden rounded-2xl border border-border shadow-2xl shadow-primary/5">
             <div className="flex items-center gap-2 border-b border-border bg-background/40 px-4 py-3">
               <span className="size-3 rounded-full bg-destructive/70" />
               <span className="size-3 rounded-full bg-chart-3/70" />
@@ -101,7 +105,8 @@ export function HeroSection() {
                 developer.tsx
               </span>
             </div>
-            <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed">
+            {/* 5. تأكيد w-full و max-w-full لكي يعمل التمرير الداخلي (Scroll) فقط للأكواد بدون كسر الموقع */}
+            <pre className="max-w-full w-full overflow-x-auto p-4 sm:p-5 font-mono text-[13px] leading-relaxed">
               <code>
                 <span className="text-chart-2">const</span>{" "}
                 <span className="text-primary">developer</span>{" "}
@@ -138,8 +143,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll hint */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
         <div className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-border p-1.5">
           <span className="size-1.5 animate-bounce rounded-full bg-primary" />
         </div>
